@@ -6,3 +6,9 @@ let level
 function render(document: any) {
     console.log(document)
 }
+
+let numbers: number[] = [1, 2, 3]
+
+let anyNumber = []
+anyNumber[0] = 1
+anyNumber[1] = '1'

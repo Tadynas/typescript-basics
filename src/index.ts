@@ -140,9 +140,21 @@ let ride = {
     speed: speed ?? 30
 }
 
+
 // Type Assertions
 let phone = document.getElementById('phone') as HTMLInputElement
 let phone2 = <HTMLInputElement>document.getElementById('phone')
 
 phone.value
 phone2.value
+
+
+// The unknown type
+function render2(document: unknown) {
+    // Narrowing
+    if (typeof document === 'string') {
+        document.toUpperCase()
+    }
+    // document.move()
+    // document.fly()
+}

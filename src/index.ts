@@ -131,3 +131,11 @@ console.log(customer?.birthday?.getFullYear())
 // Optional call
 let log: any = null
 log?.('a')
+
+
+
+// The Nullish Coaelscing Operator
+let speed: number | null = null
+let ride = {
+    speed: speed ?? 30
+}

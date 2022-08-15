@@ -11,3 +11,5 @@ let anyNumber = [];
 anyNumber[0] = 1;
 anyNumber[1] = '1';
 let user = [1, 'Ted'];
+let mySize = 2;
+console.log(mySize);

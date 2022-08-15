@@ -139,3 +139,10 @@ let speed: number | null = null
 let ride = {
     speed: speed ?? 30
 }
+
+// Type Assertions
+let phone = document.getElementById('phone') as HTMLInputElement
+let phone2 = <HTMLInputElement>document.getElementById('phone')
+
+phone.value
+phone2.value

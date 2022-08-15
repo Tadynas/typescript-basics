@@ -158,3 +158,17 @@ function render2(document: unknown) {
     // document.move()
     // document.fly()
 }
+
+// Never type
+function reject(message: string): never {
+    throw new Error(message)
+}
+
+function processEvents(): never {
+    while (true) {
+        
+    }
+}
+
+// reject('...')
+// console.log('Hello World')

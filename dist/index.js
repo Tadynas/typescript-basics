@@ -85,18 +85,48 @@ function processEvents() {
     }
 }
 class Account {
-    constructor(id, owner, balance) {
+    constructor(id, owner, _balance) {
         this.id = id;
         this.owner = owner;
-        this.balance = balance;
+        this._balance = _balance;
     }
     deposit(amount) {
         if (amount < 0) {
             throw new Error('Invalid amount');
         }
-        this.balance += amount;
+        this._balance += amount;
+    }
+    get balance() {
+        return this._balance;
+    }
+    set balance(value) {
+        if (value < 0) {
+            throw new Error('Invalid value');
+        }
+        this._balance = value;
     }
 }
 let account = new Account(1, 'Ted', 0);
 account.deposit(100);
 console.log(account instanceof Account);
+console.log(account.balance);
+account.balance = 1;
+class SeatAssignment {
+}
+let seats = new SeatAssignment();
+seats.A1 = 'Ted';
+seats.A2 = 'Bob';
+class Ride {
+    start() {
+        Ride.activeRides++;
+    }
+    stop() {
+        Ride.activeRides--;
+    }
+}
+Ride.activeRides = 0;
+let ride1 = new Ride();
+ride1.start();
+let ride2 = new Ride();
+ride2.start();
+console.log(Ride.activeRides);

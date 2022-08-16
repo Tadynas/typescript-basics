@@ -180,7 +180,7 @@ class Account {
     // owner: string
     // private _balance: number // private
     nickname?: string // optional
-    
+
                 // Parameter properties
     constructor(public readonly id: number, public owner: string, private _balance: number) {
         // this.id = id
@@ -200,8 +200,18 @@ class Account {
 
     // }
 
-    getBalance(): number {
+    // Getter
+    get balance(): number {
         return this._balance
+    }
+
+    // Setter
+    set balance(value: number) {
+        if (value < 0) {
+            throw new Error('Invalid value')
+        }
+
+        this._balance = value
     }
 }
 
@@ -212,5 +222,6 @@ account.deposit(100)
 console.log(account instanceof Account)
 
 
-// Access control keywords
-console.log(account.getBalance())
+// Getters and setters
+console.log(account.balance)
+account.balance = 1

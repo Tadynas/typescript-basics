@@ -142,11 +142,11 @@ let ride = {
 
 
 // Type Assertions
-let phone = document.getElementById('phone') as HTMLInputElement
-let phone2 = <HTMLInputElement>document.getElementById('phone')
+// let phone = document.getElementById('phone') as HTMLInputElement
+// let phone2 = <HTMLInputElement>document.getElementById('phone')
 
-phone.value
-phone2.value
+// phone.value
+// phone2.value
 
 
 // The unknown type
@@ -173,6 +173,8 @@ function processEvents(): never {
 // reject('...')
 // console.log('Hello World')
 
+
+// Creating class
 class Account {
     id: number
     owner: string
@@ -192,3 +194,9 @@ class Account {
         this.balance += amount
     }
 }
+
+
+// Creating objects
+let account = new Account(1, 'Ted', 0)
+account.deposit(100)
+console.log(account instanceof Account)

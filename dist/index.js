@@ -72,10 +72,6 @@ let speed = null;
 let ride = {
     speed: speed !== null && speed !== void 0 ? speed : 30
 };
-let phone = document.getElementById('phone');
-let phone2 = document.getElementById('phone');
-phone.value;
-phone2.value;
 function render2(document) {
     if (typeof document === 'string') {
         document.toUpperCase();
@@ -101,3 +97,6 @@ class Account {
         this.balance += amount;
     }
 }
+let account = new Account(1, 'Ted', 0);
+account.deposit(100);
+console.log(account instanceof Account);

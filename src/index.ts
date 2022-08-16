@@ -176,15 +176,16 @@ function processEvents(): never {
 
 // Creating class
 class Account {
-    readonly id: number  // read-only
-    owner: string
-    private _balance: number // private
+    // readonly id: number  // read-only
+    // owner: string
+    // private _balance: number // private
     nickname?: string // optional
-
-    constructor(id: number, owner: string, balance: number) {
-        this.id = id
-        this.owner = owner
-        this._balance = balance
+    
+                // Parameter properties
+    constructor(public readonly id: number, public owner: string, private _balance: number) {
+        // this.id = id
+        // this.owner = owner
+        // this._balance = balance
     }
 
     deposit(amount: number): void {

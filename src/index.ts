@@ -178,13 +178,13 @@ function processEvents(): never {
 class Account {
     readonly id: number  // read-only
     owner: string
-    balance: number
+    private _balance: number // private
     nickname?: string // optional
 
     constructor(id: number, owner: string, balance: number) {
         this.id = id
         this.owner = owner
-        this.balance = balance
+        this._balance = balance
     }
 
     deposit(amount: number): void {
@@ -192,7 +192,15 @@ class Account {
             throw new Error('Invalid amount')
         }
 
-        this.balance += amount
+        this._balance += amount
+    }
+
+    // private calculateTax() {
+
+    // }
+
+    getBalance(): number {
+        return this._balance
     }
 }
 
@@ -203,6 +211,5 @@ account.deposit(100)
 console.log(account instanceof Account)
 
 
-
-
-// Read-only and optional properties
+// Access control keywords
+console.log(account.getBalance())

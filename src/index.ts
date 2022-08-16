@@ -225,3 +225,16 @@ console.log(account instanceof Account)
 // Getters and setters
 console.log(account.balance)
 account.balance = 1
+
+
+
+// Index signatures
+class SeatAssignment {
+    [seatNumber: string]: string
+}
+
+let seats = new SeatAssignment()
+
+seats.A1 = 'Ted'
+seats.A2 = 'Bob'
+

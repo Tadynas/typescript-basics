@@ -380,3 +380,24 @@ class ArrayUtils {
 }
 
 let num = ArrayUtils.wrapInArray('1')
+
+
+// Generic interfaces
+interface IResult<T> {
+    data: T | null
+    error: string | null
+}
+
+function fetch<T>(url: string): IResult<T> {
+    return { data: null, error: null }
+}
+
+interface IUser {
+    username: string
+}
+
+interface IProduct {
+    title: string
+}
+let result1 = fetch<IUser>('url')
+let result2 = fetch<IProduct>('url')

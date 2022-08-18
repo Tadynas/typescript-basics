@@ -290,3 +290,14 @@ class Student extends Person {
 }
 
 let student = new Student(1, 'Ted', 'Greek')
+
+// Method overriding
+class Teacher extends Person {
+    override get fullName() {
+        return 'Professor ' + super.fullName
+    }
+}
+
+let teacher = new Teacher('Ted', 'Greek')
+
+console.log(teacher.fullName)

@@ -388,7 +388,7 @@ interface IResult<T> {
     error: string | null
 }
 
-function fetch<T>(url: string): IResult<T> {
+function fetch<T>(): IResult<T> {
     return { data: null, error: null }
 }
 
@@ -399,5 +399,32 @@ interface IUser {
 interface IProduct {
     title: string
 }
-let result1 = fetch<IUser>('url')
-let result2 = fetch<IProduct>('url')
+let result1 = fetch<IUser>()
+let result2 = fetch<IProduct>()
+
+// Generic constrain 
+function echo1<T extends number | string>(value: T): T {
+    return value
+}
+
+function echo2<T extends { name: string }>(value: T): T {
+    return value
+}
+
+interface IPerson {
+    name: string
+}
+
+function echo3<T extends IPerson>(value: T): T {
+    return value
+}
+
+function echo4<T extends Person>(value: T): T {
+    return value
+}
+
+
+echo1('a')
+echo2({ name: 'a' })
+echo3({ name: 'a' })
+echo4(new Teacher('a', 'b'))

@@ -336,3 +336,29 @@ class Circle extends Shape {
 
 // let shape = new Shape('red')
 // shape.render()
+
+
+
+// Interfaces
+interface ICalendar {
+    name: string
+    addEvent(): void
+    removeEvent(): void
+}
+
+interface ICloudCalendar extends ICalendar {
+    sync(): void
+}
+
+class GoogleCalendar implements ICalendar {
+    constructor(public name: string) {}
+
+    addEvent(): void {
+        throw new Error("Method not implemented.")
+    }
+    
+    removeEvent(): void {
+        throw new Error("Method not implemented.")
+    }
+
+}

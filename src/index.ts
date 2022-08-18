@@ -274,7 +274,8 @@ class Person {
         return this.firstName + ' ' + this.lastName
     }
 
-    walk() {
+    // Protected members (can be inherited in sub classes)
+    protected walk() {
         console.log('Walking')
     }
 }
@@ -285,6 +286,7 @@ class Student extends Person {
     }
 
     takeTest() {
+        this.walk
         console.log('Taking a test')
     }
 }

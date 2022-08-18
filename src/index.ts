@@ -356,9 +356,16 @@ class GoogleCalendar implements ICalendar {
     addEvent(): void {
         throw new Error("Method not implemented.")
     }
-    
+
     removeEvent(): void {
         throw new Error("Method not implemented.")
     }
 
 }
+
+class KeyValuePair<K, V> {
+    constructor(public key: K, public value: V) {}
+}
+
+let pair = new KeyValuePair('1', 2)
+pair.key

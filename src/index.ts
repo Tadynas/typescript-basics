@@ -363,9 +363,20 @@ class GoogleCalendar implements ICalendar {
 
 }
 
+// Generic classes 
 class KeyValuePair<K, V> {
     constructor(public key: K, public value: V) {}
 }
 
 let pair = new KeyValuePair('1', 2)
 pair.key
+
+
+// Generic functions
+class ArrayUtils {
+    static wrapInArray<T>(value: T) {
+        return [value]
+    }
+}
+
+let num = ArrayUtils.wrapInArray('1')

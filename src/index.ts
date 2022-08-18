@@ -428,3 +428,40 @@ echo1('a')
 echo2({ name: 'a' })
 echo3({ name: 'a' })
 echo4(new Teacher('a', 'b'))
+
+
+// Extending generic classes
+interface IProduct {
+    name: string
+    price: number
+}
+
+class Store<T> {
+    protected _objects: T[] = []
+
+    add(obj: T): void {
+        this._objects.push(obj)
+    }
+}
+
+class CompressibleStore<T> extends Store<T> {
+    compress() {}
+}
+
+let store = new CompressibleStore<IProduct>()
+store.compress()
+
+// Restricting the generic type parameter
+class SearchableStore<T extends { name: string }> extends Store<T> {
+    find(name: string): T | undefined {
+        return this._objects.find(obj => obj.name === name)
+    }
+}
+
+// Fix the generic type parameter
+class ProductStore extends Store<IProduct> {
+    filterByCategory(category: string): IProduct[] {
+        category // To disable warning
+        return []
+    }
+}

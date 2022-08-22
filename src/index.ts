@@ -478,3 +478,19 @@ store2.add({ name: 'a', price: 1 })
 store2.find('name', 'a')
 store2.find('price', 1)
 // store2.find('nonExisting', 1)
+
+// Type mapping
+type ReadOnly<T> = {
+    // Index signature
+    // keyof
+    readonly [K in keyof T]: T[K]
+}
+
+type Optional<T> = {
+    [K in keyof T]? : T[K]
+}
+
+let product: ReadOnly<IProduct2> = {
+    name: 'a',
+    price: 1
+}

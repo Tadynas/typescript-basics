@@ -431,7 +431,7 @@ echo4(new Teacher('a', 'b'))
 
 
 // Extending generic classes
-interface IProduct {
+interface IProduct2 {
     name: string
     price: number
 }
@@ -441,6 +441,12 @@ class Store<T> {
 
     add(obj: T): void {
         this._objects.push(obj)
+    }
+
+    // keyof operator
+    // T is Product => keyof T == 'name' | 'price'
+    find(property: keyof T, value: unknown): T | undefined {
+        return this._objects.find(obj => obj[property] === value)
     }
 }
 
@@ -452,11 +458,11 @@ let store = new CompressibleStore<IProduct>()
 store.compress()
 
 // Restricting the generic type parameter
-class SearchableStore<T extends { name: string }> extends Store<T> {
-    find(name: string): T | undefined {
-        return this._objects.find(obj => obj.name === name)
-    }
-}
+// class SearchableStore<T extends { name: string }> extends Store<T> {
+//     find(name: string): T | undefined {
+//         return this._objects.find(obj => obj.name === name)
+//     }
+// }
 
 // Fix the generic type parameter
 class ProductStore extends Store<IProduct> {
@@ -465,3 +471,10 @@ class ProductStore extends Store<IProduct> {
         return []
     }
 }
+
+// Keyof operator
+let store2 = new Store<IProduct2>()
+store2.add({ name: 'a', price: 1 })
+store2.find('name', 'a')
+store2.find('price', 1)
+// store2.find('nonExisting', 1)

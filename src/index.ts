@@ -270,6 +270,7 @@ console.log(Ride.activeRides)
 class Person {
     constructor(public firstName: string, public lastName: string) {}
 
+    @Capitalize
     get fullName() {
         return this.firstName + ' ' + this.lastName
     }
@@ -558,3 +559,20 @@ class Person2 {
 let person = new Person2()
 
 person.say('Hello')
+
+
+// Accessor decorators
+function Capitalize(target: any, methodName: string, descriptor: PropertyDescriptor) {
+    const original = descriptor.get
+    descriptor.get = function() {
+        // ! Definetly not null or undefined
+        const result = original!.call(this)
+        if (typeof result === 'string') {
+            return result.toUpperCase()
+        }
+        return result
+    }
+}
+
+let personCap = new Person('ted', 'greek')
+console.log(personCap.fullName)

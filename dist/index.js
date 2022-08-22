@@ -151,6 +151,9 @@ class Person {
         console.log('Walking');
     }
 }
+__decorate([
+    Capitalize
+], Person.prototype, "fullName", null);
 class Student extends Person {
     constructor(studentId, firstName, lastName) {
         super(firstName, lastName);
@@ -297,9 +300,9 @@ ProfileComponent = __decorate([
 ], ProfileComponent);
 function Log(target, methodName, descriptor) {
     const original = descriptor.value;
-    descriptor.value = function (message) {
+    descriptor.value = function (...args) {
         console.log('Before');
-        original.call(this, message);
+        original.call(this, ...args);
         console.log('After');
     };
 }
@@ -313,3 +316,15 @@ __decorate([
 ], Person2.prototype, "say", null);
 let person = new Person2();
 person.say('Hello');
+function Capitalize(target, methodName, descriptor) {
+    const original = descriptor.get;
+    descriptor.get = function () {
+        const result = original.call(this);
+        if (typeof result === 'string') {
+            return result.toUpperCase();
+        }
+        return result;
+    };
+}
+let personCap = new Person('ted', 'greek');
+console.log(personCap.fullName);

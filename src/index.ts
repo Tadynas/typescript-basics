@@ -523,7 +523,14 @@ function Component2(options: ComponentOptions) {
     }
 }
 
-@Component2({ selector: '#form' })
+// Decorator composition
+function Pipe(constructor: Function) {
+    console.log('Pipe decorator called')
+    constructor.prototype.pipe = true
+}
+
+@Component2({ selector: '#form' })      // / \
+@Pipe                                   //  |
 class ProfileComponent {
 
 }

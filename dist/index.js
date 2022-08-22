@@ -275,8 +275,23 @@ function Component(constructor) {
         console.log('Inserting the component in the DOM');
     };
 }
+function Component2(options) {
+    return (constructor) => {
+        console.log('Component decorator called');
+        constructor.prototype.options = options;
+        constructor.prototype.uniqueId = Date.now();
+        constructor.prototype.insertInDOM = () => {
+            console.log('Inserting the component in the DOM');
+        };
+    };
+}
+function Pipe(constructor) {
+    console.log('Pipe decorator called');
+    constructor.prototype.pipe = true;
+}
 let ProfileComponent = class ProfileComponent {
 };
 ProfileComponent = __decorate([
-    Component
+    Component2({ selector: '#form' }),
+    Pipe
 ], ProfileComponent);

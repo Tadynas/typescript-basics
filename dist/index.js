@@ -328,3 +328,28 @@ function Capitalize(target, methodName, descriptor) {
 }
 let personCap = new Person('ted', 'greek');
 console.log(personCap.fullName);
+function MinLength(length) {
+    return (target, propertyName) => {
+        let value;
+        const descriptor = {
+            get() { return value; },
+            set(newValue) {
+                if (newValue.length < length) {
+                    throw new Error(`Property should be at least ${length} characters long.`);
+                }
+                value = newValue;
+            }
+        };
+        Object.defineProperty(target, propertyName, descriptor);
+    };
+}
+class User {
+    constructor(password) {
+        this.password = password;
+    }
+}
+__decorate([
+    MinLength(4)
+], User.prototype, "password", void 0);
+let user1 = new User('123');
+console.log(user1.password);

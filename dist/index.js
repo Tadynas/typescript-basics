@@ -1,4 +1,10 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var _a;
 let sales = 123456789;
 let course = 'TypeScript';
@@ -151,6 +157,7 @@ class Student extends Person {
         this.studentId = studentId;
     }
     takeTest() {
+        this.walk;
         console.log('Taking a test');
     }
 }
@@ -171,3 +178,105 @@ function printNames(people) {
         console.log(person.fullName);
     }
 }
+class Shape {
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Circle extends Shape {
+    constructor(radius, color) {
+        super(color);
+        this.radius = radius;
+    }
+    render() {
+        console.log('Rendering a circle');
+    }
+}
+class GoogleCalendar {
+    constructor(name) {
+        this.name = name;
+    }
+    addEvent() {
+        throw new Error("Method not implemented.");
+    }
+    removeEvent() {
+        throw new Error("Method not implemented.");
+    }
+}
+class KeyValuePair {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+let pair = new KeyValuePair('1', 2);
+pair.key;
+class ArrayUtils {
+    static wrapInArray(value) {
+        return [value];
+    }
+}
+let num = ArrayUtils.wrapInArray('1');
+function fetch() {
+    return { data: null, error: null };
+}
+let result1 = fetch();
+let result2 = fetch();
+function echo1(value) {
+    return value;
+}
+function echo2(value) {
+    return value;
+}
+function echo3(value) {
+    return value;
+}
+function echo4(value) {
+    return value;
+}
+echo1('a');
+echo2({ name: 'a' });
+echo3({ name: 'a' });
+echo4(new Teacher('a', 'b'));
+class Store {
+    constructor() {
+        this._objects = [];
+    }
+    add(obj) {
+        this._objects.push(obj);
+    }
+    find(property, value) {
+        return this._objects.find(obj => obj[property] === value);
+    }
+}
+class CompressibleStore extends Store {
+    compress() { }
+}
+let store = new CompressibleStore();
+store.compress();
+class ProductStore extends Store {
+    filterByCategory(category) {
+        category;
+        return [];
+    }
+}
+let store2 = new Store();
+store2.add({ name: 'a', price: 1 });
+store2.find('name', 'a');
+store2.find('price', 1);
+let product = {
+    name: 'a',
+    price: 1
+};
+function Component(constructor) {
+    console.log('Component decorator called');
+    constructor.prototype.uniqueId = Date.now();
+    constructor.prototype.insertInDOM = () => {
+        console.log('Inserting the component in the DOM');
+    };
+}
+let ProfileComponent = class ProfileComponent {
+};
+ProfileComponent = __decorate([
+    Component
+], ProfileComponent);

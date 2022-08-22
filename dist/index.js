@@ -295,3 +295,21 @@ ProfileComponent = __decorate([
     Component2({ selector: '#form' }),
     Pipe
 ], ProfileComponent);
+function Log(target, methodName, descriptor) {
+    const original = descriptor.value;
+    descriptor.value = function (message) {
+        console.log('Before');
+        original.call(this, message);
+        console.log('After');
+    };
+}
+class Person2 {
+    say(message) {
+        console.log('Person says ' + message);
+    }
+}
+__decorate([
+    Log
+], Person2.prototype, "say", null);
+let person = new Person2();
+person.say('Hello');

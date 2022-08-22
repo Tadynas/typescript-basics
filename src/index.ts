@@ -534,3 +534,27 @@ function Pipe(constructor: Function) {
 class ProfileComponent {
 
 }
+
+// Method decorators
+function Log(target: any, methodName: string, descriptor: PropertyDescriptor) {
+    
+    const original = descriptor.value as Function
+
+    descriptor.value = function(...args: any) {
+        console.log('Before')
+        original.call(this, ...args)
+        console.log('After')
+    }
+}
+
+
+class Person2 {
+    @Log
+    say(message: string) {
+        console.log('Person says ' + message)
+    }
+}
+
+let person = new Person2()
+
+person.say('Hello')

@@ -607,3 +607,27 @@ class User {
 
 let user1 = new User('1234')
 console.log(user1.password)
+
+// Parameter decorator
+type WatchedParameter = {
+    methodName: string,
+    parameterIndex: number
+}
+
+const watchedParameters: WatchedParameter[] = []
+
+function Watch(target: any, methodName: string, parameterIndex: number) {
+    watchedParameters.push({
+        methodName,
+        parameterIndex
+    })
+}
+
+
+class Vehicle {
+    move(@Watch speed: number) {
+
+    }
+}
+
+console.log(watchedParameters)

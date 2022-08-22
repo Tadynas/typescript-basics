@@ -506,7 +506,24 @@ function Component(constructor: Function) {
     }
 }
 
-@Component 
+type ComponentOptions = {
+    selector: string
+}
+
+// Parameterized Decorators
+// Decorator factory
+function Component2(options: ComponentOptions) {
+    return (constructor: Function) => {
+        console.log('Component decorator called')
+        constructor.prototype.options = options
+        constructor.prototype.uniqueId = Date.now()
+        constructor.prototype.insertInDOM = () => {
+            console.log('Inserting the component in the DOM')
+        }
+    }
+}
+
+@Component2({ selector: '#form' })
 class ProfileComponent {
 
 }

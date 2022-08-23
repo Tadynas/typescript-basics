@@ -9,6 +9,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 var _a;
+Object.defineProperty(exports, "__esModule", { value: true });
 let sales = 123456789;
 let course = 'TypeScript';
 let is_published = true;
@@ -371,3 +372,8 @@ __decorate([
     __param(0, Watch)
 ], Vehicle.prototype, "move", null);
 console.log(watchedParameters);
+const shapes_1 = require("./shapes");
+let circle = new shapes_1.Circle(1);
+console.log(circle.radius);
+const tax_1 = require("./tax");
+console.log((0, tax_1.calculateTax)(1000));

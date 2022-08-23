@@ -638,3 +638,6 @@ import { Circle as CircleModule } from './shapes'
 let circle = new CircleModule(1)
 console.log(circle.radius)
 
+// Including JS code
+import { calculateTax as calculateTaxModule } from './tax'
+console.log(calculateTaxModule(1000))

@@ -631,3 +631,10 @@ class Vehicle {
 }
 
 console.log(watchedParameters)
+
+// Modules
+import { Circle as CircleModule } from './shapes'
+
+let circle = new CircleModule(1)
+console.log(circle.radius)
+
